@@ -1,0 +1,12 @@
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.selected {
+  border: 1px solid darkgreen;
+  width: 30%;
+  height: auto;
+  border-radius: 50%;
+}/*# sourceMappingURL=profile-image-selector.component.css.map */

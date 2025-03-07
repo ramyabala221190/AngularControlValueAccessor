@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const QUANTITY_CONTROL_PROVIDER={
@@ -18,7 +18,6 @@ export class QuantityControlComponent implements ControlValueAccessor {
   private onChange!:Function;
   private onTouched!:Function;
   quantity:number=0;
-
   
   writeValue(qty:number): void {
     //Update the value when FormControl changes

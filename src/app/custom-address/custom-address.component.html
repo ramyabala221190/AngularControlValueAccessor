@@ -1,22 +1,23 @@
 <form [formGroup]="addressForm">
   <ng-container formArrayName="addressLineList">
     <ng-container *ngFor="let address of addressControls;let i=index;">
-       <div [formGroupName]="i">
+       <div [formGroupName]="i" class="row">
          
-         <div class="form-control">
-          <label>Street</label><textarea formControlName="street"></textarea>
+         <div class="col-md-4 form-field">
+          <label class="form-label">Street</label><textarea formControlName="street" class="form-control"></textarea>
          </div>
-         <div class="form-control">
-          <label>Suite</label><textarea formControlName="suite"></textarea>
+         <div class="col-md-4 form-field">
+          <label class="form-label">Suite</label><textarea formControlName="suite" class="form-control"></textarea>
          </div>
-         <div class="form-control">
-          <label>City</label><textarea formControlName="city"></textarea>
+         <div class="col-md-4 form-field">
+          <label class="form-label">City</label><textarea formControlName="city" class="form-control"></textarea>
          </div>
-         <div class="form-control">
-          <label>Zipcode</label><textarea formControlName="zipcode"></textarea>
+         <div class="col-md-4 form-field">
+          <label class="form-label">Zipcode</label><textarea formControlName="zipcode" class="form-control"></textarea>
          </div>
        </div>
     </ng-container>
   </ng-container>
-  <button (click)="addAddress()">Add Address</button>
+
+  <!-- <button class="btn btn-primary" (click)="addAddress()">Add Address</button> -->
 </form>

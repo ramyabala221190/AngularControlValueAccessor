@@ -11,6 +11,7 @@ import { CustomAddressComponent } from './custom-address/custom-address.componen
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppData } from './services/app.data';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AppData } from './services/app.data';
     DateValueAccessorDirective,
     QuantityControlComponent,
     ProfileImageSelectorComponent,
-    CustomAddressComponent
+    CustomAddressComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,

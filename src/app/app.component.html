@@ -1,62 +1,6 @@
-<form [formGroup]="userForm">
-  <ng-container formArrayName="userList">
-    <ng-container *ngFor="let userControl of userControls;let i=index;">
-      <div [formGroupName]="i" class="user-container">
-        <div class="form-control">
-          <label>Name</label><input type="text" formControlName="name">
-        </div>
-        <div class="form-control">
-          <label>DOB</label><input type="date" formControlName="dob" 
-          [value]="userControl?.get('dob')?.value|date:'yyyy-MM-dd'">
-        </div>
-        <div class="form-control">
-          <label>Email</label><input type="email" formControlName="email">
-        </div>
-        <div class="form-control">
-          <label>Profile</label>
-          <profile-image-selector formControlName="profile" [imageList]="imageList"></profile-image-selector>
-        </div>
-        <div class="form-control" formArrayName="phone">
-          <div *ngFor="let control of getPhoneControls(i);let j=index;">
-            <div [formGroupName]="j">
-              <label>Phone Number</label>
-              <input type="text" formControlName="phoneNumber">
-              <label>Phone Type</label>
-              <ng-container *ngFor="let type of phoneTypeList">
-                <input type="radio" [value]="type" formControlName="phoneType">{{type}}
-              </ng-container>
-              <label>Preferred</label>
-              <input type="checkbox" formControlName="preferred">
-              <em>{{control.errors?.['required']}}</em>
-            </div>
-
-
-          </div>
-          <button (click)="addPhone(i)">Add Phone</button>
-        </div>
-
-        <div class="form-control">
-          <label>Website</label><input type="text" formControlName="website">
-        </div>
-
-        <div class="form-control">
-          <label>Favourite Rank</label><input type="range" min="0" max="5" formControlName="favourite">
-        </div>
-
-        <div class="form-control">
-          <label>Addresses</label>
-          <app-custom-address formControlName="address"></app-custom-address>
-        </div>
-        <button (click)="updateUser(i)">Update User</button>
-      </div>
-    </ng-container>
-
-
-  </ng-container>
-
-</form>
-
-<!-- <app-quantity-control formControlName="quantity"></app-quantity-control> -->
-<!-- <button (click)="resetQuantity()">Reset</button> -->
-
-{{userForm.value|json}}
+<div class="container">
+  <ul>
+    <li><a [routerLink]="['contact']">Contact Form</a></li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

@@ -1,7 +1,7 @@
 <ul style="list-style-type: none;display:flex" *ngIf="!selectedImage.length">
     <li *ngFor="let image of imageList" (click)="selectImage(image)" >
-        <img [src]="'assets/images/'+image" [alt]="'assets/images/'+image">
+        <img class="img-fluid" [src]="'assets/images/superheroes/'+image" [alt]="'assets/images/superheroes/'+image">
     </li>
 </ul>
 
-<img class="selected" *ngIf="selectedImage.length" [src]="'assets/images/'+ selectedImage" (click)="resetSelection()">
+<img class="selected img-fluid" *ngIf="selectedImage.length" [src]="'assets/images/superheroes/'+ selectedImage" (click)="resetSelection()">

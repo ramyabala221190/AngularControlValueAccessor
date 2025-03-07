@@ -1,0 +1,77 @@
+<form [formGroup]="userForm">
+    <ng-container formArrayName="userList">
+      <ng-container *ngFor="let userControl of userControls;let i=index;">
+        <div [formGroupName]="i" class="user-container row">
+          <div class="col-md-4 form-field">
+            <label class="form-label">Name</label><input class="form-control" type="text" formControlName="name">
+          </div>
+          <div class="col-md-4 form-field">
+            <label class="form-label">DOB</label><input type="date" formControlName="dob"  class="form-control"
+            [value]="userControl?.get('dob')?.value|date:'yyyy-MM-dd'">
+          </div>
+          <div class="col-md-4 form-field">
+            <label class="form-label">Email</label><input type="email" formControlName="email" class="form-control">
+          </div>
+          <div class="col-md-12 form-field">
+            <label class="form-label">Profile</label>
+            <profile-image-selector formControlName="profile" [imageList]="imageList"></profile-image-selector>
+          </div>
+          <ng-container formArrayName="phone">
+            <div *ngFor="let control of getPhoneControls(i);let j=index;">
+              <div [formGroupName]="j" class="col-md-8">
+                <div class="form-field">
+                  <label class="form-label">Phone Number</label><input type="text" formControlName="phoneNumber" class="form-control">
+                </div>
+                
+                <div class="form-field">
+                    <label class="form-label">Phone Type</label>
+                    <ng-container *ngFor="let type of phoneTypeList">
+                      <div class="form-check"> 
+                        <label class="form-check-label">{{type}}</label>
+                        <input type="radio" [value]="type" formControlName="phoneType" class="form-check-input">
+                      </div>
+                       
+                    </ng-container>
+                </div>
+
+                <div class="form-check">
+                  <label class="form-check-label">Preferred ? </label>
+                  <input type="checkbox" formControlName="preferred" class="form-check-input">
+              </div>
+               
+              
+                <em>{{control.errors?.['required']}}</em>
+              </div>
+  
+  
+            </div>
+              <!-- <button class="btn btn-primary" (click)="addPhone(i)">Add Phone</button> -->
+          </ng-container>
+  
+          <div class="col-md-4 form-field">
+            <label class="form-label">Website</label><input type="text" formControlName="website" class="form-control">
+          </div>
+  
+          <div class="col-md-4 form-field">
+            <label class="form-label">Favourite Rank</label><input class="form-range" type="range" min="0" max="5" formControlName="favourite">
+          </div>
+  
+          <div class="col-md-8 form-field">
+            <label class="form-label main">Addresses</label>
+            <app-custom-address formControlName="address"></app-custom-address>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-primary" (click)="updateUser(i)">Update User</button>
+          </div>
+        </div>
+      </ng-container>
+  
+  
+    </ng-container>
+  
+  </form>
+  
+  <!-- <app-quantity-control formControlName="quantity"></app-quantity-control> -->
+  <!-- <button (click)="resetQuantity()">Reset</button> -->
+  
+  <!-- {{userForm.value|json}} -->

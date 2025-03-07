@@ -30,7 +30,6 @@ export class DateValueAccessorDirective implements ControlValueAccessor {
   writeValue(newValue:any): void {
     //called whenever the bound FormControl value changes. It will update the html element value.
     if(newValue instanceof Date){
-      console.log(newValue);
     this.element.nativeElement.value=newValue.toISOString().split('T')[0];
     }
   }

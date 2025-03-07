@@ -1,5 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
-.form-control{
+
+
+ul{
+    display: flex;
+    list-style-type: none;
+
+    li{
+        padding:5px;
+    }
+}
+
+input,textarea{
+    outline: none;
+    border:0px
+}
+
+.form-label,.form-check-label{
+    font-weight: bold;
+}
+
+.main{
+    font-size:larger
+}
+
+.form-field{
     display:flex;
 }
