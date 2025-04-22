@@ -1,1 +1,5 @@
-<button (click)="addQuantity()">+</button><span>{{quantity}}</span><button (click)="removeQuantity()">-</button>
+<div class="qty-control-container">
+    <button [disabled]="disableAction" class="btn btn-primary" type="button" (click)="addQuantity()">+</button>
+    <span>{{quantity}}</span>
+    <button [disabled]="disableAction" class="btn btn-warning" type="button" (click)="removeQuantity()">-</button>
+</div>

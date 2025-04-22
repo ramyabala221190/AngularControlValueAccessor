@@ -1,4 +1,4 @@
-<ul style="list-style-type: none;display:flex" *ngIf="!selectedImage.length">
+<ul *ngIf="!selectedImage.length">
     <li *ngFor="let image of imageList" (click)="selectImage(image)" >
         <img class="img-fluid" [src]="'assets/images/superheroes/'+image" [alt]="'assets/images/superheroes/'+image">
     </li>

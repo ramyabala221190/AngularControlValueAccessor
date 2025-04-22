@@ -1,0 +1,28 @@
+<form [formGroup]="phoneForm">
+    <div formArrayName="phoneList" class="phone-list-container">
+       <div *ngFor="let control of phoneListControls;let i=index" [formGroupName]="i" class="phone-container">
+        <button type="button" class="btn-close" aria-label="Close" (click)="removePhone(i)"></button>
+
+        <div class="form-group">
+            <label class="form-label">Number</label><input type="text" formControlName="phoneNumber" class="form-control"
+            (blur)="onTouched()">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"> Phone Type</label>
+          <div *ngFor="let type of phoneTypeList" class="form-check-inline form-check" > 
+            <label class="form-check-label">{{type}}</label>
+            <input type="radio" [value]="type" formControlName="phoneType" class="form-check-input" (blur)="onTouched()">
+          </div>
+        </div>
+
+         <div class="form-group">
+          <div class="form-check form-check-inline">
+            <label class="form-label">Is this your Preferred Phone Type ? </label>
+            <input type="checkbox" formControlName="preferred" class="form-check-input" (blur)="onTouched()">
+        </div>
+         </div>
+       </div>
+      </div>
+      <button class="btn btn-primary" (click)="addPhone()">Add Phone</button>
+</form>

@@ -1,23 +1,12 @@
-<form [formGroup]="addressForm">
-  <ng-container formArrayName="addressLineList">
-    <ng-container *ngFor="let address of addressControls;let i=index;">
-       <div [formGroupName]="i" class="row">
-         
-         <div class="col-md-4 form-field">
-          <label class="form-label">Street</label><textarea formControlName="street" class="form-control"></textarea>
-         </div>
-         <div class="col-md-4 form-field">
-          <label class="form-label">Suite</label><textarea formControlName="suite" class="form-control"></textarea>
-         </div>
-         <div class="col-md-4 form-field">
-          <label class="form-label">City</label><textarea formControlName="city" class="form-control"></textarea>
-         </div>
-         <div class="col-md-4 form-field">
-          <label class="form-label">Zipcode</label><textarea formControlName="zipcode" class="form-control"></textarea>
-         </div>
-       </div>
-    </ng-container>
-  </ng-container>
-
-  <!-- <button class="btn btn-primary" (click)="addAddress()">Add Address</button> -->
+<form [formGroup]="addressForm" >
+  <div formArrayName="addressLineList" class="address-list-container">
+    <div *ngFor="let address of addressControls;let i=index;" [formGroupName]="i" class="address-container">   
+          <label class="form-label">Street</label><textarea formControlName="street" class="form-control" (blur)="onTouched()"></textarea>
+          <label class="form-label">Suite</label><textarea formControlName="suite" class="form-control" (blur)="onTouched()"></textarea>
+          <label class="form-label">City</label><textarea formControlName="city" class="form-control" (blur)="onTouched()"></textarea>
+          <label class="form-label">Zipcode</label><textarea formControlName="zipcode" class="form-control" (blur)="onTouched()"></textarea>
+          <button type="button" class="btn-close" aria-label="Close" (click)="removeAddress(i)"></button>
+        </div>
+      </div>
+  <button class="btn btn-primary" (click)="addAddress()">Add Address</button>
 </form>

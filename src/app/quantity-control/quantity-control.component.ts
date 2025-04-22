@@ -15,34 +15,42 @@ const QUANTITY_CONTROL_PROVIDER={
 })
 export class QuantityControlComponent implements ControlValueAccessor {
 
-  private onChange!:Function;
-  private onTouched!:Function;
+  private onChange!:(value:number)=>void;
+  private onTouched!:()=>void;
   quantity:number=0;
+  disableAction:boolean=false;
   
   writeValue(qty:number): void {
-    //Update the value when FormControl changes
+    console.log("writeValue called");
     this.quantity=qty;
-    console.log("Form Control value has changed")
   }
-  registerOnChange(fn: Function): void {
-    //update the FormControl, when value changes
+  registerOnChange(fn: (value:number)=>void): void {
     this.onChange=(qty:number)=>{
-      console.log("Update the FormControl Value")
+      console.log("registerOnChange: callback function called")
       fn(qty);
     }
   }
-  registerOnTouched(fn: Function): void {
-    this.onTouched=fn;
+  registerOnTouched(fn: ()=>void): void {
+    this.onTouched=()=>{
+      console.log("registerOnTouched: callback function called")
+      fn();
+    }
+  }
+
+  setDisabledState(isDisabled:boolean){
+    this.disableAction=isDisabled;
   }
   
   addQuantity(){
     this.quantity++;
-    this.onChange(this.quantity)  // update the FormControl, when value changes
+    this.onChange(this.quantity);
+    this.onTouched();
   }
 
   removeQuantity(){
     this.quantity--;
-    this.onChange(this.quantity) // update the FormControl, when value changes
+    this.onChange(this.quantity);
+    this.onTouched();
   }
 
 }

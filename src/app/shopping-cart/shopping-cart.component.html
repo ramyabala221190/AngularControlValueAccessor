@@ -1,0 +1,19 @@
+<form [formGroup]="cartForm" (ngSubmit)="submit()" class="productForm">
+<div formArrayName="products">
+   <div *ngFor="let product of productList;let i=index" [formGroupName]="i">
+       <div class="product-container">
+         <label class="form-label">{{product.get('name')?.value}}</label>
+         <label class="description">{{product.get('description')?.value}}</label>
+         <label class="price">${{product.get('price')?.value}}</label>
+         <app-quantity-control formControlName="quantity"></app-quantity-control>
+         <!-- <div class="qty-control-container">
+          <button [disabled]="product.get('quantity')?.disabled" class="btn btn-primary" type="button" (click)="addQuantity(i)">+</button>
+          <span>{{product.get('quantity')?.value}}</span>
+          <button [disabled]="product.get('quantity')?.disabled" class="btn btn-warning" type="button" (click)="removeQuantity(i)">-</button>
+      </div> -->
+      
+       </div>
+   </div>
+</div>
+<button class="btn btn-success" type="submit">Add To Cart</button>
+</form>

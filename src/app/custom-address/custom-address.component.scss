@@ -1,0 +1,21 @@
+
+.address-list-container{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap:10px
+}
+
+.address-container{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        border:1px solid black;
+        width:auto;
+        padding:10px;
+        margin:5px;
+}
+
+.btn-close{
+    align-self: flex-start;
+}

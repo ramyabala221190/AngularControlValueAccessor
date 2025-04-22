@@ -16,14 +16,11 @@ input,textarea{
     border:0px
 }
 
-.form-label,.form-check-label{
+.form-label{
     font-weight: bold;
+    font-style: italic;
 }
 
 .main{
     font-size:larger
-}
-
-.form-field{
-    display:flex;
 }
