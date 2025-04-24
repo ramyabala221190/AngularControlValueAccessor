@@ -59,7 +59,7 @@ export class ContactFormComponent {
       address:[user.address],
       phone:[user.phone],
       website:[user.website,[Validators.required]],
-      favourite:[user.favourite,[Validators.required]],
+      favourite:[user.favourite,[favValidator]],
       profile:[user.profile,[Validators.required]]
     })
   }
@@ -81,6 +81,10 @@ export class ContactFormComponent {
   }
 
   
+}
+
+export function favValidator(control:AbstractControl):ValidationErrors|null{
+  return control.value == 0 ? {"errors":true} : null;
 }
 
 

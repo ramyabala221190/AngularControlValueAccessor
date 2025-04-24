@@ -12,7 +12,12 @@
             <label class="form-label">Email</label><input type="email" formControlName="email" class="form-control">
           </div>
           <div class="form-group">
-            <label class="form-label">Profile</label>
+            <label class="form-label">Profile
+            </label>
+            <div>
+              <span><b>Touched ?</b> {{userControl.get('profile')?.touched}}</span>
+              <span><b>Valid  ?</b> {{userControl.get('profile')?.valid}}</span>
+            </div>
             <profile-image-selector formControlName="profile" [imageList]="imageList"></profile-image-selector>
           </div>
 
@@ -31,6 +36,10 @@
   
           <div class="form-group">
             <label class="form-label">Addresses</label>
+            <div>
+              <span><b>Touched ?</b> {{userControl.get('address')?.touched}}</span>
+              <span><b>Valid  ?</b> {{userControl.get('address')?.valid}}</span>
+            </div>
             <app-custom-address formControlName="address"></app-custom-address>
           </div>
           <div class="form-group update-button">
@@ -39,8 +48,6 @@
         </div>
   
     </ng-container>
-
-
   
   </form>
   

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Observable, tap } from 'rxjs';
 import { Product } from '../models';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -47,19 +47,9 @@ export class ShoppingCartComponent {
       brand: new FormControl(product.brand),
       rating: new FormControl(product.rating),
       stock:new FormControl(product.stock),
-      quantity:new FormControl({value:product.stock == 0 ? 0 : 1,disabled:product.stock == 0})
+      quantity:new FormControl({value:product.quantity,disabled:product.stock == 0})
     })
   }
 
-  addQuantity(productIndex:number){
-     let originalQty= (<FormArray>this.cartForm.get('products')).at(productIndex).get('quantity')?.value;
-     (<FormArray>this.cartForm.get('products')).at(productIndex).get('quantity')?.setValue(originalQty+1)
-    }
-
-
-  removeQuantity(productIndex:number){
-    let originalQty= (<FormArray>this.cartForm.get('products')).at(productIndex).get('quantity')?.value;
-    (<FormArray>this.cartForm.get('products')).at(productIndex).get('quantity')?.setValue(originalQty-1)
-  }
-
 }
+

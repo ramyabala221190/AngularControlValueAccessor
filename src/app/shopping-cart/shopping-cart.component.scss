@@ -15,11 +15,18 @@
     }
 }
 
-.qty-control-container{
+
+.qty-control-status{
     display:flex;
     justify-content: flex-start;
-    align-items: center;
 }
+
+
+.error-nostock{
+    font-weight: bold;
+    color: red;
+}
+
 
 
 

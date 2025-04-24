@@ -60,6 +60,7 @@ export class AppData implements InMemoryDbService {
           "price": 9.99,
           "discountPercentage": 7.17,
           "rating": 4.94,
+          "quantity":2,
           "stock": 5,
           "tags": [
             "beauty",
@@ -119,6 +120,7 @@ export class AppData implements InMemoryDbService {
           "category": "beauty",
           "price": 19.99,
           "discountPercentage": 5.5,
+          "quantity":1,
           "rating": 3.28,
           "stock": 44,
           "tags": [
@@ -180,6 +182,7 @@ export class AppData implements InMemoryDbService {
           "price": 14.99,
           "discountPercentage": 18.14,
           "rating": 3.82,
+          "quantity":4,
           "stock": 59,
           "tags": [
             "beauty",
@@ -240,6 +243,7 @@ export class AppData implements InMemoryDbService {
           "price": 12.99,
           "discountPercentage": 19.03,
           "rating": 2.51,
+          "quantity":1,
           "stock": 68,
           "tags": [
             "beauty",
@@ -300,6 +304,7 @@ export class AppData implements InMemoryDbService {
           "price": 8.99,
           "discountPercentage": 2.46,
           "rating": 3.91,
+          "quantity":6,
           "stock": 0,
           "tags": [
             "beauty",

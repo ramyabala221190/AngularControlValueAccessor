@@ -1,24 +1,30 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 
-const QUANTITY_CONTROL_PROVIDER={
-  provide:NG_VALUE_ACCESSOR,
-  useExisting:forwardRef(()=>QuantityControlComponent),
-  multi:true
-}
 
 @Component({
   selector: 'app-quantity-control',
   templateUrl: './quantity-control.component.html',
   styleUrls: ['./quantity-control.component.scss'],
-  providers:[QUANTITY_CONTROL_PROVIDER]
+  providers:[{
+    provide:NG_VALUE_ACCESSOR,
+    useExisting:forwardRef(()=>QuantityControlComponent),
+    multi:true
+  },
+{
+  provide:NG_VALIDATORS,
+  useExisting:forwardRef(()=>QuantityControlComponent),
+  multi:true
+}]
 })
-export class QuantityControlComponent implements ControlValueAccessor {
-
+export class QuantityControlComponent implements ControlValueAccessor,Validator {
+  
   private onChange!:(value:number)=>void;
   private onTouched!:()=>void;
   quantity:number=0;
   disableAction:boolean=false;
+
+  //ControlValueAccessor interface methods
   
   writeValue(qty:number): void {
     console.log("writeValue called");
@@ -40,6 +46,19 @@ export class QuantityControlComponent implements ControlValueAccessor {
   setDisabledState(isDisabled:boolean){
     this.disableAction=isDisabled;
   }
+
+  //Validator interface methods
+
+  validate(control: AbstractControl<any, any>): ValidationErrors | null {
+    return this.quantity == 0 ? {"errors":"Product quantity is 0"}:null;
+  }
+
+  registerOnValidatorChange?(fn: () => void): void {
+    //optional method. if not implemented, can be removed
+  }
+
+
+  //Add or remove quantity
   
   addQuantity(){
     this.quantity++;
@@ -48,9 +67,10 @@ export class QuantityControlComponent implements ControlValueAccessor {
   }
 
   removeQuantity(){
+    if(this.quantity > 0){
     this.quantity--;
     this.onChange(this.quantity);
+    }
     this.onTouched();
   }
-
 }
